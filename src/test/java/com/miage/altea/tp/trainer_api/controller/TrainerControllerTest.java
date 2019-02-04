@@ -1,15 +1,13 @@
 package com.miage.altea.tp.trainer_api.controller;
 
+import com.miage.altea.tp.trainer_api.bo.Trainer;
 import com.miage.altea.tp.trainer_api.service.TrainerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -76,4 +74,15 @@ class TrainerControllerTest {
 
         assertNotNull(pathVariableAnnotation);
     }
+
+    @Test
+    void postTrainer_shouldBeAnnotated() throws NoSuchMethodException {
+        var createTrainer =
+                TrainerController.class.getDeclaredMethod("createTrainer", Trainer.class);
+        var postMapping = createTrainer.getAnnotation(PostMapping.class);
+
+
+        assertNotNull(postMapping);
+    }
+
 }
