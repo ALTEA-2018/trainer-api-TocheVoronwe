@@ -15,6 +15,9 @@ public class Trainer {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Pokemon> team;
 
+    @Column
+    private String password;
+    
     public Trainer() {
     }
 
